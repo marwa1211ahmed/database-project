@@ -321,12 +321,39 @@ END;
  
 
 DELIMITER ; 
-
+INSERT INTO Component (ComponentID, ComponentName, AvailableQuantity, MinimumQuantity)
+VALUES (1, 'Resistor', 3, 2);
+INSERT INTO TestComponent (ComponentID, TestID, QuantityUsed)
+VALUES (1, 101, 1);
+INSERT INTO TestComponent (ComponentID, TestID, QuantityUsed)
+VALUES (1, 102, 1);
+select*
+from component where  ComponentID=1;
  
 
 -- Example to trigger stock warning 
 
 -- INSERT INTO TestComponent (TestID, ComponentID) VALUES (101, 4); 
+SELECT DISTINCT P.Name
+FROM Patient P
+JOIN TestResult TR ON P.PatientID = TR.PatientID
+JOIN MedicalTest MT ON TR.TestID = MT.TestID
+WHERE MT.Name = 'CBC'
+  AND YEAR(TR.TestDate) = YEAR(CURDATE()) - 1;
+
+
+SELECT Name
+FROM Component
+WHERE AvailableQuantity < MinimumQuantity;
+
+
+SELECT P.Name, SUM(MT.Price) AS TotalPaid
+FROM Patient P
+JOIN TestResult TR ON P.PatientID = TR.PatientID
+JOIN MedicalTest MT ON TR.TestID = MT.TestID
+WHERE P.PatientID = 12527
+  AND TR.TestDate >= DATE_SUB(CURDATE(), INTERVAL 3 YEAR)
+GROUP BY P.Name;
 
  
 ## Schema Description
