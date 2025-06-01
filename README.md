@@ -13,7 +13,7 @@ This project implements a relational database for managing operations in a medic
 
 ├─https://youtu.be/Ev2BAWvf89g /video_link.txt     ← Public YouTube/MS Stream URL
 
-├─ /sql/
+├─ [db.sql](https://github.com/marwa1211ahmed/database-project/commit/542613f22ece228427f6bbeed20ef710d1604bea)/sql/
      
 CREATE DATABASE IF NOT EXISTS Laboratorian_db; 
 USE Laboratorian_db; 
